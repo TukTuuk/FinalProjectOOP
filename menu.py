@@ -275,167 +275,53 @@ def displayMenu():
 
     elif mainMenu == 3:
             #laboratories code here
-            pass
+        class laboratry: 
+            def addLabToFile():
+                newLabtxt= laboratry.formatLabInfo()
+                f= open("laboratories.txt", "a")
+                f.write(newLabtxt)
+                f.close
 
-
-
-    elif mainMenu == 4:
-            #patients code here
-
-        class Patient:
-            def __init__(pat, id, name, disease, gender, age):
-                pat.id = id
-                pat.name = name
-                pat.disease = disease
-                pat.gender = gender
-                pat.age = age
-
-        # #1 - Display patient list
-
-        def displayPatientsList():        
-            pankaj = Patient(12, "Pankaj", "Cancer", "Male", 30)
-            janina = Patient(13, "Janina", "Cold", "Female", 23)
-            alona = Patient(14, "Alona", "Malaria", "Female", 45)
-            ravi = Patient(15, "Ravi", "Diabetes", "Male", 65)
-
-            print("ID\t", end=''), print("Name\t", end=''), print("Disease\t\t", end=''), print("Gender\t\t", end=''), print("Age")
-            print(pankaj.id, end='\t'), print(pankaj.name, end='\t'), print(pankaj.disease, end='\t\t'), print(pankaj.gender, end='\t\t'), print(pankaj.age)
-            print(janina.id, end='\t'), print(janina.name, end='\t'), print(janina.disease, end='\t\t'), print(janina.gender, end='\t\t'), print(janina.age)
-            print(alona.id, end='\t'), print(alona.name, end='\t'), print(alona.disease, end='\t\t'), print(alona.gender, end='\t\t'), print(alona.age)
-            print(ravi.id, end='\t'), print(ravi.name, end='\t'), print(ravi.disease, end='\t'), print(ravi.gender, end='\t\t'), print(ravi.age)
-            # displayPatientsList()
-
-
-        def readPatientsFile():
-                f = open("patients.txt", "r")
-                return f
-
-        # readfiles = readPatientsFile()
-        # print(readfiles.read())
-
-        def displayPatientsInfo():
-                f = open("patients.txt", "r")
-
-                print(f.readline().split("_"))
-                print(f.readline().split("_"))
-                print(f.readline().split("_"))
-                print(f.readline().split("_"))
-                print(f.readline().split("_"))
-        # displayPatientsInfo()
-
-        #2 - Search for patient by ID
-
-        def searchPatientById():
-                readPatientsFile()
-                searchId = input("Enter Patient id: \n")
-                match = None
-                for obj in searchId:
-                        if obj.id == searchId:
-                                match = True
-                                print("ID\t", end=''), print("Name\t", end=''), print("Disease\t\t", end=''), print("Gender\t\t", end=''), print("Age")
-                                print(obj)
-                                break
-                        else:
-                                match = False
-
-                if match == False:
-                        print("Can't find the Patient with the same id on the system")
-        # searchPatientById()
-
-        #3 - Add patient
-
-        def enterPatientinfo():
-                patientId = input("Enter Patient id: \n")
-                patientName = input("Enter Patient name: \n")
-                patientDisease = input("Enter Patient disease: \n")
-                patientGender = input("Enter Patient gender: \n")
-                patientAge = int(input("Enter Patient age: \n"))
-
-                newPatient = (patientId, patientName, patientDisease, patientGender, patientAge)
-                return newPatient
-        # enterPatientinfo()
-
-        #4 - Edit patient info
-        def editPatientInfo():
-                editPat = input("Please enter the id of the Patient that you want to edit their information: \n")
-                match = None
-
-                for obj in readPatientsFile:
-                        if obj == editPat:
-                                match = True
-                                obj.name = input("Enter new Name: \n")
-                                obj.disease = input("Enter new disease: \n")
-                                obj.gender = input("Enter new gender: \n")
-                                obj.age = int(input("Enter new age: \n"))
-                                Patient.formatPatientInfo()
-                                Patient.addPatientToFile()
-                                break
-                        else:
-                                match = False
-
-                if match == False:
-                        print("Can't find the patient with the same id on the system")
-        # editPatientInfo()
-
-        def formatPatientInfo():
-                newText = Patient.enterPatientInfo()
-                patText = "{}_{}_{}_{}_{}"
-                modpatText = (patText.format(newText[0], newText[1], newText[2], newText[3], newText[4]))
-                
-                return modpatText
-
-        def addPatientToFile():
-                modpatText = Patient.formatPatient.info()
-                f = open("patients.txt", "a")
-
-                f.write(modpatText)
-                f.close()
-
-                f = open("patients.txt")
-
-                print(f.readlines)
-
-        def writeListOfPatientsToFile():
+    
+            def writeListOfLabsToFile():
                 pass
 
-
-
-        # -----Display Menu for Patient Class-----
-
-        patMenu = int(input("\n Patients Menu: \n1 - Display patients list \n2 - Search for patient by ID \n3 - Add patient \n4 - Edit patient info \n5 - Back to the Main Menu \n"))
-        while True:
-            if patMenu == 1:
-                displayPatientsList()
-                print("Back to previous Menu")
-                patMenu = int(input("\n Patients Menu: \n1 - Display patients list \n2 - Search for patient by ID \n3 - Add patient \n4 - Edit patient info \n5 - Back to the Main Menu \n"))
-
-            elif patMenu == 2:
-                searchPatientById()
-                print("Back to previous Menu")
-                patMenu = int(input("\n Patients Menu: \n1 - Display patients list \n2 - Search for patient by ID \n3 - Add patient \n4 - Edit patient info \n5 - Back to the Main Menu \n"))
-
-            elif patMenu == 3:
-                enterPatientinfo()
-                print("Back to previous Menu")
-                patMenu = int(input("\n Patients Menu: \n1 - Display patients list \n2 - Search for patient by ID \n3 - Add patient \n4 - Edit patient info \n5 - Back to the Main Menu \n"))
-
-            elif patMenu == 4:
-                editPatientInfo()
-                print("Back to previous Menu")
-                patMenu = int(input("\n Patients Menu: \n1 - Display patients list \n2 - Search for patient by ID \n3 - Add patient \n4 - Edit patient info \n5 - Back to the Main Menu \n"))
-
-            elif patMenu == 5:
-                print("Back to previous Menu")
-                displayMenu()
-
-            else:
-                print("Invalid input")
-                break   
-
-    elif mainMenu == 0:
-        print("Thank you for using AH Management system")
-
-    else:
-        print("Error please enter a number between 0-4")
     
-displayMenu()
+            def displayLabsList():
+                f=open("laboratories.txt", "r")
+                for line in f:
+                    print(line.replace("_","\t"))
+
+        def formatLabInfo():
+            newLab= laboratry.enterLaboratoryInfo()
+            labTxt= "\n{}_{}"
+            newLabTxt=(labTxt.format(newLab[0],newLab[1]))
+            return newLabTxt
+
+        def enterLaboratoryInfo():
+            newLabNb=input("Enter Laboratory facility:\n")
+            newLabCost=input("Enter Laboratory cost:\n")
+            newlab= newLabNb, newLabCost
+            return newlab
+    
+    
+        def readLaboratoriesFile():
+            f = open('laboratories.txt')
+            for line in f:
+                print(line.replace("_","\t"))
+        
+        print("Laboratories Menu:")
+        menu= int(input("\n 1- Display laboratories list \n 2- Add laboratory \n 3- Back to the Main Menu\n"))
+        while menu:
+            match menu:
+                case 1:
+                    laboratry.displayLabsList()
+                    print('Back to the previous Menu')
+                    menu= int(input("\n 1- Display laboratories list \n 2- Add laboratory \n 3- Back to the Main Menu\n"))
+                case 2:
+                    laboratry.addLabToFile()
+                    print('Back to the previous Menu')
+                    menu= int(input("\n 1- Display laboratories list \n 2- Add laboratory \n 3- Back to the Main Menu\n"))
+                case 3: 
+                    displayMenu()
+
