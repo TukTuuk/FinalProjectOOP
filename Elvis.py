@@ -29,7 +29,7 @@ class laboratry:
     
     
     def readLaboratoriesFile():
-        f = open('laboratories.txt')
+        f = open('laboratories.txt','r')
         for line in f:
             print(line.replace("_","\t"))
         
